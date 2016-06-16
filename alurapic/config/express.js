@@ -4,6 +4,9 @@
 
   app.use(express.static('./public'));
 
-  consign().include('app/routes').into(app);
+  consign({cwd: 'app' })
+    .include('api')
+    .then('routes')
+    .into(app);
 
   module.exports = app;
