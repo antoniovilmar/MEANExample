@@ -1,4 +1,5 @@
 var api = {};
+var CONTADOR = 2;
 var fotos = [{
     _id: 1,
     titulo: 'Leão',
@@ -21,12 +22,21 @@ api.buscaPorId = function(req, res) {
     res.json(foto);
 }
 
-api.removePorId = function(req, res){
-    fotos = fotos.filter(function(foto){
+api.removePorId = function(req, res) {
+    fotos = fotos.filter(function(foto) {
         return foto._id != req.params.id;
     });
 
     res.sendStatus(204);
+}
+
+api.adiciona = function(req, res) {
+    var foto = req.body;
+    foto._id = ++CONTADOR;
+    fotos.push(foto);
+
+    res.json(foto);
+
 }
 
 module.exports = api;
