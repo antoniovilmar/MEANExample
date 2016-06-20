@@ -10,7 +10,6 @@ var fotos = [{
 }];
 
 api.lista = function(req, res) {
-
     res.json(fotos);
 }
 
@@ -20,6 +19,14 @@ api.buscaPorId = function(req, res) {
     });
 
     res.json(foto);
+}
+
+api.removePorId = function(req, res){
+    fotos = fotos.filter(function(foto){
+        return foto._id != req.params.id;
+    });
+
+    res.sendStatus(204);
 }
 
 module.exports = api;
