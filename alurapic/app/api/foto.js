@@ -29,7 +29,7 @@ api.removePorId = function(req, res) {
             '_id': req.params.id
         })
         .then(function() {
-            res.sendStatus(200);
+            res.sendStatus(204);
         }, function(error) {
             console.log(error);
             res.sendStatus(500).json(error);
